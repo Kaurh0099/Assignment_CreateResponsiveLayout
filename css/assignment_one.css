@@ -2,31 +2,41 @@
 Implement your CSS code in this file. Do not change anything in any other file.
 Only this will be graded.
 */
+/* Setting overall body style*/ 
+body{
+    font-family: 'Quicksand', sans-serif;
+    width: 100%;
+    padding: 4vw
+}
+
+/*Making header a flex container*/ 
 header{
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 30px 30px;
+    padding: 30px 0;
     background-color: #ffffff;
 }
 
-.title{
-font-size: 24px;
-font-weight: bold;
-}
-
+/*Arranging mainBody for flex*/ 
 #mainBody{
     display: flex;
     gap: 100px;
     margin-bottom: 50px;
 }
 
+/*Setting a proper heght for leftConatiner and HeightConatiner*/ 
+#leftContainer,#rightContainer{
+    height: 100%;
+}
 
-
+/*Making that leftConatiner fill 1 proper space*/ 
 #leftContainer{
 flex: 1;
 }
 
+
+/* Making rightContainer a grid layout */
 #rightContainer{
 display: grid;
 grid-template-rows: repeat(3, 160px);
@@ -34,40 +44,79 @@ grid-template-columns: 2fr 1fr 1fr;
 gap: 5px;
 }
 
+/*Arrange zero image to cover full height*/
+.gridImage.zero{
+grid-row: 1/4;
+}
+
+/*Making imgs fill into grid*/
 .gridImage img{
     width: 100%;
     height:100%;
     object-fit:cover;
  }
 
-
-@media(max--width:1000px){
+/*For tablet*/ 
+@media (max-device-width:1000px){
+    /* Adjust body width for tablet */
     body{
         width: 60%;
-        margin: 0%;
     }
-    
+    /*Making main content vertically on tablets */
     #mainBody{
-        display: flex;
         flex-direction: column;
         gap:  40px;
     }
-    #leftContainer,#rightContainer{
-        display:block;
-        width:100% 
+
+    /*Menu bar row setting*/
+#topMenu{
+        display:flex;
+        flex-direction: row;
+        flex-wrap:nowrap;
+        gap:10px;
+        justify-content: center;
 }
-#rightContainer{
+
+ /* Adjust grid layout for tablet */
+#rightContainer {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    grid-template-rows: repeat(3,160px);
-    gap: 10px;
+    grid-template-rows: repeat(2,160px);
+    gap: 5px;
 }
-.display_md{
+
+/*Hide elements*/
+.display_md {
     display: none;
 }
 }
-@media(max-width:570px){
+
+/*For mobile*/ 
+@media (max-device-width:570px){
+
+        /* Adjust body width for mobile */
     body{
         width: 80%;
     }
+    /*Header flex setting*/
+    header{
+        flex-direction: row;
+        justify-content: space-between;
+        flex-wrap: wrap;
+        align-items:center;
+        gap: 7px;
+    }
+
+    /*Menu bar row setting*/
+    #topMenu{
+        display:flex;
+        flex-wrap:nowrap;
+        gap:6px;
+    }
+
+    /* Prevent button from shrinking */
+#topMenu .button{
+    display: flex;
+    flex-shrink: 0;;
+}
 }
